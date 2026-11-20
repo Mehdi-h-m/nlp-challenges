@@ -4,6 +4,14 @@ Extract the substring of a tweet that best supports its given sentiment. The [Ka
 
 DistilBERT predicts start and end tokens for positive and negative tweets. The model uses tokenizer offsets to slice the original text, preserving punctuation and casing. For neutral tweets, it predicts the full tweet. Validation uses a sentiment-stratified split and includes all three sentiments when scoring.
 
+## Results
+
+| Validation Jaccard | Kaggle public | Kaggle private | Submission ID |
+| ---: | ---: | ---: | ---: |
+| 0.69082 | 0.69202 | 0.69449 | `58635350` |
+
+The submission used notebook version 3 and fine-tuned for two epochs.
+
 ## Run locally
 
 Install PyTorch 2.6 or later for your hardware and install the remaining dependencies with `python -m pip install pandas numpy scikit-learn transformers`. Download and unzip the [competition data](https://www.kaggle.com/competitions/tweet-sentiment-extraction/data) into this folder's `data/` directory. Run this from the workspace root.

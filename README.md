@@ -1,16 +1,17 @@
 # NLP Challenges
 
-My workspace for solving natural language processing challenges on Kaggle. Each challenge has its own folder for exploratory analysis, modeling notebooks, and evaluation figures.
+My workspace for Kaggle NLP challenges. It covers multi-label classification, phrase similarity, and text span extraction.
 
-## Challenges
+## Results
 
-| Challenge | Task | Progress |
-| --- | --- | --- |
-| [Jigsaw Toxic Comment Classification](Jiggsaw/) | Predict six overlapping toxicity labels for Wikipedia comments | EDA and TF-IDF baseline complete. DistilBERT training is in progress. |
-| [U.S. Patent Phrase to Phrase Matching](PatentPhraseMatching/) | Score semantic similarity between two phrases in a patent category | DistilBERT regression baseline |
-| [Tweet Sentiment Extraction](TweetSentimentExtraction/) | Extract the text span that supports a tweet's given sentiment | DistilBERT span extraction baseline |
+| Challenge | Model | Metric | Validation | Kaggle public | Kaggle private | Submission ID |
+| --- | --- | --- | ---: | ---: | ---: | ---: |
+| [Jigsaw Toxic Comment Classification](#jigsaw-toxic-comment-classification) | TF-IDF + logistic regression | Mean ROC AUC | 0.9812 | 0.97550 | 0.97577 | `58622163` |
+| [Jigsaw Toxic Comment Classification](#jigsaw-toxic-comment-classification) | DistilBERT classification | Mean ROC AUC | 0.9906 | 0.98404 | 0.98449 | `58634677` |
+| [U.S. Patent Phrase to Phrase Matching](PatentPhraseMatching/) | DistilBERT regression | Pearson correlation | 0.76278 | 0.7339 | 0.7507 | `58635351` |
+| [Tweet Sentiment Extraction](TweetSentimentExtraction/) | DistilBERT span extraction | Mean word-level Jaccard | 0.69082 | 0.69202 | 0.69449 | `58635350` |
 
-Each challenge folder has its own setup instructions. The [Kaggle packaging script](package_kaggle.py) turns the two DistilBERT training scripts into self-contained competition notebooks with offline model weights.
+Patent Matching and Tweet Sentiment have local training and submission instructions in their project READMEs. The packaging script builds their Kaggle notebooks and attaches the model weights as an offline input. [Patent Matching](PatentPhraseMatching/) · [Tweet Sentiment](TweetSentimentExtraction/) · [Kaggle packaging script](package_kaggle.py)
 
 ## Jigsaw Toxic Comment Classification
 
@@ -22,11 +23,11 @@ The target labels are `toxic`, `severe_toxic`, `obscene`, `threat`, `insult`, an
 | [02 · TF-IDF + logistic regression](Jiggsaw/notebooks/02_baseline_tfidf_logreg.ipynb) | Word unigrams and bigrams, one classifier per label, held-out validation, and Kaggle submission. |
 | [04 · DistilBERT fine-tuning](Jiggsaw/notebooks/04_distilbert_finetune.ipynb) | Fine-tunes `distilbert-base-uncased` for multi-label classification and compares each label with the baseline. |
 
-The TF-IDF baseline recorded **0.9812 mean ROC AUC** on its held-out validation split. Duplicate or near-duplicate comments may make that estimate optimistic. The [figures folder](Jiggsaw/figures/) includes the per-label baseline results and plots from the exploratory analysis.
+Duplicate or near-duplicate comments across the training and validation split may make the validation scores optimistic. The figures include per-label results for the TF-IDF baseline and plots from exploratory analysis. [Jigsaw figures](Jiggsaw/figures/)
 
 See the [Kaggle competition](https://www.kaggle.com/competitions/jigsaw-toxic-comment-classification-challenge) for the task and data. Rob Mulla’s [Kaggle EDA notebook](https://www.kaggle.com/code/robikscube/jiggsaw-toxic-comments-eda-twitch-stream/notebook) is a reference for the challenge.
 
-## Run the notebooks
+### Run the Jigsaw notebooks
 
 1. Download the competition data from the [Kaggle data page](https://www.kaggle.com/competitions/jigsaw-toxic-comment-classification-challenge/data). Extract `train.csv` and `test.csv` into `Jiggsaw/data/`.
 2. In a Python environment, install the notebook and baseline dependencies.

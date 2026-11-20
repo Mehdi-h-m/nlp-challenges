@@ -4,6 +4,14 @@ Predict a similarity score between 0 and 1 for two phrases in a Cooperative Pate
 
 The validation split groups rows by normalized anchor phrase so the same anchor stays on one side of the split. The script chooses the epoch with the best validation Pearson correlation and predicts a score for each test ID.
 
+## Results
+
+| Validation Pearson | Kaggle public | Kaggle private | Submission ID |
+| ---: | ---: | ---: | ---: |
+| 0.76278 | 0.7339 | 0.7507 | `58635351` |
+
+The submission used notebook version 3 and fine-tuned for two epochs.
+
 ## Run locally
 
 Install PyTorch 2.6 or later for your hardware and install the remaining dependencies with `python -m pip install pandas numpy scikit-learn transformers`. Download and unzip the [competition data](https://www.kaggle.com/competitions/us-patent-phrase-to-phrase-matching/data) into this folder's `data/` directory. Run this from the workspace root.
