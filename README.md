@@ -7,6 +7,10 @@ My workspace for solving natural language processing challenges on Kaggle. Each 
 | Challenge | Task | Progress |
 | --- | --- | --- |
 | [Jigsaw Toxic Comment Classification](Jiggsaw/) | Predict six overlapping toxicity labels for Wikipedia comments | EDA and TF-IDF baseline complete. DistilBERT training is in progress. |
+| [U.S. Patent Phrase to Phrase Matching](PatentPhraseMatching/) | Score semantic similarity between two phrases in a patent category | DistilBERT regression baseline |
+| [Tweet Sentiment Extraction](TweetSentimentExtraction/) | Extract the text span that supports a tweet's given sentiment | DistilBERT span extraction baseline |
+
+Each challenge folder has its own setup instructions. The [Kaggle packaging script](package_kaggle.py) turns the two DistilBERT training scripts into self-contained competition notebooks with offline model weights.
 
 ## Jigsaw Toxic Comment Classification
 
